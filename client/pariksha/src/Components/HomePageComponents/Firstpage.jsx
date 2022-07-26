@@ -1,8 +1,6 @@
 import React from "react";
-import LoginNavBar from "../NavBar/LoginNavBar";
 import './firstpage.css';
 import SignInButton from "../NavBar/SignInButton";
-import Footer from "../Login/Footer";
 
 const Firstpage = () => {
     return (
