@@ -1,0 +1,27 @@
+@media(max-width: 900px) {
+    .signinButton {
+        margin-top: 10px;
+    }
+}
+.signinButton {
+    margin-left: 10px;
+    font-family: 'Lato';
+    font-size: 1.2rem;
+    font-weight: 700;
+    background-color: #6674CC;
+    color: #F6F8FF
+}
+.loginButton{
+    margin-left: 10px;
+    font-family: 'Lato';
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #6674CC ;
+    border-color: #6674CC;
+    border-width: 2px;
+}
+.loginButton:hover{
+    background-color: #6674CC;
+    color: #F6F8FF
+}
+
