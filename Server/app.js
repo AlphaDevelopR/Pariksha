@@ -5,6 +5,7 @@ const mongoose =  require("mongoose");
 const User = require("./models/User");
 const cors = require("cors");
 const bcrypt = require('bcryptjs');
+var nodemailer = require('nodemailer');
 const saltRounds = 10;
 mongoose.connect("mongodb+srv://Ankit9442:Ankitrawat9442@cluster0.tqs5b.mongodb.net/?retryWrites=true&w=majority" , {
     useNewUrlParser : true
@@ -68,7 +69,29 @@ app.post("/insert" ,  (req , res) =>{
         if (err) throw err;
         if (isMatch) {
           console.log("login successfully ");
-   
+          
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'deepakbhatt9442@gmail.com',
+      pass: 'sliecsrqagygmqzx'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'deepakbhatt9442@gmail.com',
+    to: stdid,
+    subject: 'Pariksha App Authentication',
+    text: " Student Id :" + 1001 + "\n password : " + "Ankitrawat9442"
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
         } else {
          console.log("password not matched ");
         }
