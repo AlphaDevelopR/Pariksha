@@ -1,11 +1,11 @@
 import FormLoginImage from "./FormLoginImage";
-import React from "react";
+import React, { Suspense } from "react";
 import InputField from "./InputField";
 import RegisterButton from "./RegisterButton";
 import { useState } from "react";
 import './formstyle.css';
 
-const Form = () => {
+const Form = (prop) => {
 
     const [userDetails, setDetails] = useState({
         studentId: "",
@@ -17,9 +17,9 @@ const Form = () => {
         const newValue = event.target.value;
         const fieldName = event.target.name;
 
-        console.log(fieldName);
-        console.log(newValue);
-        console.log(userDetails);
+        //console.log(fieldName);
+        //console.log(newValue);
+        //console.log(userDetails);
 
         //setDetails({studentId : newValue});
 
@@ -47,13 +47,20 @@ const Form = () => {
         });
     }
 
+    const submitDetails=(e) =>{
+        e.preventDefault();
+        prop.onSubmit(userDetails);
+
+
+    }
+
     return (
         <>
             <div className="container-fluid h-custom">
                 <div className="row d-flex justify-content-center align-items-center h-100" style={{ margin: "150px" }}>
                     <FormLoginImage />
                     <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                        <form>
+                        <form onSubmit={submitDetails}>
 
                             <InputField
                                 name="idField"
@@ -62,6 +69,7 @@ const Form = () => {
                                 change={handleInputChange}
                                 value={userDetails.studentId}
                             />
+
                             <InputField
                                 name="emailField"
                                 inputtype='email'
@@ -69,6 +77,7 @@ const Form = () => {
                                 change={handleInputChange}
                                 value={userDetails.email}
                             />
+
                             <InputField
                                 name="passwordField"
                                 inputtype="Password"
@@ -93,10 +102,9 @@ const Form = () => {
 
                             <div className="d-grid gap-2 col-12 mt-4 pt-2 ">
 
-                                    <button type="button" className="btn btn-primary "
+                                    <button type="submit" className="btn btn-primary "
                                         style={{ paddingLeft: '2.5rem', paddingRight: '2.5rem' }}
                                     >Submit</button>
-
                             </div>
 
                             <RegisterButton />

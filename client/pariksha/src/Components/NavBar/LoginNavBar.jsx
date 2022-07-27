@@ -19,10 +19,14 @@ const LoginNavBar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto">
                             <li className="nav-item">
-                                <a className="nav-link "style={{color:"#1A2930" , fontWeight:"700", fontFamily: "Lato" , fontSize:"1.2rem"}} href="/">Home</a>
+                                <a className="nav-link " style={{ color: "#1A2930", fontWeight: "700", fontFamily: "Lato", fontSize: "1.2rem" }} href="/">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link "style={{color:"#1A2930" , fontWeight:"700", fontFamily: "Lato" , fontSize:"1.2rem"}} href="">About</a>
+                                <a className="nav-link " style={{ color: "#1A2930", fontWeight: "700", fontFamily: "Lato", fontSize: "1.2rem" }} href="">About</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link " style={{ color: "#1A2930", fontWeight: "700", fontFamily: "Lato", fontSize: "1.2rem" }} href="/user-dashboard
+                                ">DashBoard</a>
                             </li>
                             <li>
                                 <LoginButton />
