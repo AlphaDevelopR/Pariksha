@@ -1,11 +1,13 @@
 import FormLoginImage from "./FormLoginImage";
-import React, { Suspense } from "react";
 import InputField from "./InputField";
 import RegisterButton from "./RegisterButton";
 import { useState } from "react";
 import './formstyle.css';
-
+import axios from "axios" ;
+import { useNavigate } from "react-router-dom";
 const Form = (prop) => {
+
+    const navigate =useNavigate();
 
     const [userDetails, setDetails] = useState({
         studentId: "",
@@ -14,44 +16,57 @@ const Form = (prop) => {
     });
 
     function handleInputChange(event) {
-        const newValue = event.target.value;
-        const fieldName = event.target.name;
+        const {name , value } = event.target;
+        //console.log(event.target);
+        //const value = event.target.value;
+       // const name = event.target.name;
 
-        //console.log(fieldName);
+        //console.log(name);
         //console.log(newValue);
         //console.log(userDetails);
 
         //setDetails({studentId : newValue});
+        setDetails(preValue=>{
+            return {
+                ...preValue,
+                [name]: value
+            };
+        });
 
-        setDetails(preValue => {
-            if (fieldName === "idField") {
+        /*setDetails(preValue => {
+            
+            if (name === "idField") {
                 return {
-                    studentId: newValue,
+                    studentId: value,
                     email: preValue.email,
                     password: preValue.password
                 }
-            } else if (fieldName === "emailField") {
+            } else if (name === "emailField") {
                 return {
                     studentId: preValue.studentId,
-                    email: newValue,
+                    email: value,
                     password: preValue.password
                 }
-            } else if (fieldName === "passwordField") {
+            } else if (name === "passwordField") {
                 return {
                     studentId: preValue.studentId,
                     email: preValue.email,
-                    password: newValue
+                    password: value
                 }
             }
 
-        });
+        });*/
     }
 
     const submitDetails=(e) =>{
         e.preventDefault();
+        try {
+            axios.post("http://localhost:2000/login" , userDetails )
+        } catch(err){
+            console.log(err);
+        }
         prop.onSubmit(userDetails);
-
-
+        navigate('/user-dashboard');
     }
 
     return (
@@ -63,7 +78,7 @@ const Form = (prop) => {
                         <form onSubmit={submitDetails}>
 
                             <InputField
-                                name="idField"
+                                name="studentId"
                                 inputtype='text'
                                 textToShow=" Valid Student Id"
                                 change={handleInputChange}
@@ -71,7 +86,7 @@ const Form = (prop) => {
                             />
 
                             <InputField
-                                name="emailField"
+                                name="email"
                                 inputtype='email'
                                 textToShow="Enter a valid email address"
                                 change={handleInputChange}
@@ -79,7 +94,7 @@ const Form = (prop) => {
                             />
 
                             <InputField
-                                name="passwordField"
+                                name="password"
                                 inputtype="Password"
                                 textToShow="Enter password"
                                 change={handleInputChange}

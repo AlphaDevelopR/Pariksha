@@ -4,6 +4,8 @@ import HomePage from './Pages/HomePage';
 import LoginPage from './Pages/LoginPage';
 import Register from './Pages/Register';
 import DashBoard from './Pages/DashBoard';
+import StudentRegistration from './Pages/StudentRegisteration';
+import ErrorPage from './Pages/ErrorPage';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path='login' element={<LoginPage />} />
         <Route path='register' element={<Register />} />
         <Route path='user-dashboard' element={<DashBoard />} />
+        <Route path='studetn-registeration' element={<StudentRegistration />} />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   );

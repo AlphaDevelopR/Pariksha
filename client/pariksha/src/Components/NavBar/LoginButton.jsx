@@ -13,7 +13,7 @@ const LoginButton = () => {
 
             <Outlet />
         </>
-
+    
     );
 }
 export default LoginButton;

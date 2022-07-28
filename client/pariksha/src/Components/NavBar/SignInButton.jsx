@@ -6,7 +6,7 @@ import './NavBar.css';
 const SignInButton = () => {
     return (
         <>
-            <Link to="/register">
+            <Link to="/studetn-registeration">
                 <button type="button" className="btn signinButton me-3 ">
                     Sign Up
                 </button>

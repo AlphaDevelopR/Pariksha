@@ -6,6 +6,7 @@ import Footer from "../Components/Login/Footer";
 const LoginPage = () => {
 
     const [userDetails, onSubmit] = useState("");
+    
     console.log(userDetails);
     return (
         <>
